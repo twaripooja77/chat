@@ -64,18 +64,18 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className='mt-10 flex justify-center items-center min-h-screen bg-gray-100'>
+    <div className=' flex justify-center items-center min-h-screen bg-gray-100'>
       <div className='bg-white w-full max-w-lg shadow-md rounded-lg p-6'>
-        <h3 className="text-2xl font-semibold text-center text-gray-800 mb-6">Welcome to Chat App!</h3>
+        <h3 className="text-2xl font-semibold text-center text-gray-800 mb-6">Register Before You Get Started!</h3>
         
         <form className='grid gap-4' onSubmit={handleSubmit}>
           <div className='flex flex-col gap-2'>
-            <label htmlFor='name' className='text-gray-600 font-medium'>Name :</label>
+            <label htmlFor='name' className='text-gray-600 font-medium'> Enter your Name :</label>
             <input
               type='text'
               id='name'
               name='name'
-              placeholder='Enter your name'
+              placeholder='Name'
               className='bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary'
               value={data.name}
               onChange={handleOnChange}
@@ -84,12 +84,12 @@ const RegisterPage = () => {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <label htmlFor='email' className='text-gray-600 font-medium'>Email :</label>
+            <label htmlFor='email' className='text-gray-600 font-medium'> Enter your Email :</label>
             <input
               type='email'
               id='email'
               name='email'
-              placeholder='Enter your email'
+              placeholder='Email'
               className='bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary'
               value={data.email}
               onChange={handleOnChange}
@@ -98,12 +98,12 @@ const RegisterPage = () => {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <label htmlFor='password' className='text-gray-600 font-medium'>Password :</label>
+            <label htmlFor='password' className='text-gray-600 font-medium'> Enter your Password :</label>
             <input
               type='password'
               id='password'
               name='password'
-              placeholder='Enter your password'
+              placeholder='Password'
               className='bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-primary'
               value={data.password}
               onChange={handleOnChange}
@@ -112,9 +112,9 @@ const RegisterPage = () => {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <label htmlFor='profile_pic' className='text-gray-600 font-medium'>Photo :</label>
+            <label htmlFor='profile_pic' className='text-gray-600 font-medium'>Enter your Photo :</label>
             <div className='h-14 bg-gray-100 border border-gray-300 flex justify-between items-center px-4 rounded-lg cursor-pointer'>
-              <p className='text-sm truncate'>{uploadPhoto?.name || "Upload profile photo"}</p>
+              <p className='text-sm truncate'>{uploadPhoto?.name || "Upload your photo"}</p>
               {uploadPhoto?.name && (
                 <button className='text-lg text-gray-500 hover:text-red-600' onClick={handleClearUploadPhoto}>
                   <IoClose />
@@ -131,14 +131,14 @@ const RegisterPage = () => {
           </div>
 
           <button
-            className='bg-blue-500 text-lg px-4 py-2 rounded-lg mt-4 font-bold text-white transition duration-200 hover:bg-blue-600'
+            className='bg-[#a060ff] text-lg px-4 py-2 rounded-lg mt-4 font-bold text-white transition duration-200 hover:bg-blue-600'
           >
             Register
           </button>
         </form>
 
-        <p className='mt-6 text-center text-gray-600'>Already have an account? 
-          <Link to={"/email"} className='text-blue-500 font-semibold ml-1 hover:underline'>Login</Link>
+        <p className='mt-6 text-center text-gray-600'>Already Registered? 
+          <Link to={"/email"} className='font-semibold ml-1 hover:underline' style={{ color: "#a060ff" }} >Login</Link>
         </p>
       </div>
     </div>

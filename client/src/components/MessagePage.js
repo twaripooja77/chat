@@ -13,6 +13,7 @@ import Loading from './Loading';
 import backgroundImage from '../assets/wallapaper.jpeg'
 import { IoMdSend } from "react-icons/io";
 import moment from 'moment'
+import CryptoJS from 'crypto-js';
 
 const MessagePage = () => {
   const params = useParams()
@@ -131,7 +132,7 @@ const MessagePage = () => {
         socketConnection.emit('new message',{
           sender : user?._id,
           receiver : params.userId,
-          text : message.text,
+          text : encryptRSA(message.text),
           imageUrl : message.imageUrl,
           videoUrl : message.videoUrl,
           msgByUserId : user?._id
@@ -144,6 +145,29 @@ const MessagePage = () => {
       }
     }
   }
+
+
+
+
+  const encryptRSA = (text) => {
+    if (!text) return '';
+    const passphrase = '123';
+    return CryptoJS.AES.encrypt(text, passphrase).toString();
+  };
+  
+  const decryptRSA = (ciphertext) => {
+    try {
+      if (!ciphertext) return '';
+      const passphrase = '123';
+      const bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+      const originalText = bytes.toString(CryptoJS.enc.Utf8);
+      return originalText || '';
+    } catch (error) {
+      return '';
+    }
+  };
+  
+  
 
 
   return (
@@ -208,7 +232,7 @@ const MessagePage = () => {
                                 )
                               }
                             </div>
-                            <p className='px-2'>{msg.text}</p>
+                            <p className='px-2'>{msg.text ? decryptRSA(msg.text) : ''}</p>
                             <p className='text-xs ml-auto w-fit'>{moment(msg.createdAt).format('hh:mm')}</p>
                           </div>
                         )
@@ -274,19 +298,19 @@ const MessagePage = () => {
                   {/**video and image */}
                   {
                     openImageVideoUpload && (
-                      <div className='bg-white shadow rounded absolute bottom-14 w-36 p-2'>
+                      <div className='bg-white shadow rounded absolute bottom-14 w-48 p-2'>
                       <form>
                           <label htmlFor='uploadImage' className='flex items-center p-2 px-3 gap-3 hover:bg-slate-200 cursor-pointer'>
                               <div className='text-primary'>
                                   <FaImage size={18}/>
                               </div>
-                              <p>Image</p>
+                              <p>Upload Image</p>
                           </label>
                           <label htmlFor='uploadVideo' className='flex items-center p-2 px-3 gap-3 hover:bg-slate-200 cursor-pointer'>
                               <div className='text-purple-500'>
                                   <FaVideo size={18}/>
                               </div>
-                              <p>Video</p>
+                              <p>Upload Video</p>
                           </label>
 
                           <input 

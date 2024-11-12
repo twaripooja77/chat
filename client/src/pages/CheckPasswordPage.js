@@ -89,13 +89,13 @@ const CheckPasswordPage = () => {
               
 
           <div className='flex flex-col gap-1'>
-                <label htmlFor='password'>Password :</label>
+                <label htmlFor='password'> Enter your Password :</label>
                 <input
                   type='password'
                   id='password'
                   name='password'
-                  placeholder='Enter your password' 
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary'
+                  placeholder='Password' 
+                  className='bg-slate-100 px-2 py-1 focus:outline-[#a060ff] '
                   value={data.password}
                   onChange={handleOnChange}
                   required
@@ -103,14 +103,14 @@ const CheckPasswordPage = () => {
               </div>
 
               <button
-               className='bg-primary text-lg  px-4 py-1 hover:bg-secondary rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
+               className='bg-[#a060ff] text-lg  px-4 py-1 hover:bg-[#8a4ddb]  rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
               >
                 Login
               </button>
 
           </form>
 
-          <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-primary font-semibold'>Forgot password ?</Link></p>
+          <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-[#a060ff] font-semibold'>Forgot password ?</Link></p>
         </div>
     </div>
   )
